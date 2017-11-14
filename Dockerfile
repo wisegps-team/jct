@@ -14,6 +14,8 @@ RUN apk add --no-cache make gcc g++ python && npm install cnpm -g --registry=htt
 COPY . /app
 
 # Expose port
-EXPOSE 6086
+EXPOSE 6088
+
+ENV NODE_ENV product
 
 CMD ["npm", "start"]
