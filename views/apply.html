@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>用车</title>
+    <link rel="stylesheet" href="./css/weui.css" />
+    <link rel="stylesheet" href="./css/example.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body ontouchstart>
+    <div class="container f15 o_auto" id="container">
+        <div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">使用人</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f15" id="showPicker">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">部门</span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f15" id="addrPicker">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">地址</span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">详细地址</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f15" id="reson_Picker">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">事由</span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15">
+                    <div class="weui-cell__hd weui-flex__item">
+                        <label class="weui-label w_a">过夜</label>
+                    </div>
+                    <div class="weui-cell__bd t_a_r">
+                        <input type="radio" value="1" name="order" checked/>是
+                        <input type="radio" value="0" name="order" />否
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15">
+                    <div class="weui-cell__hd weui-flex__item">
+                        <label class="weui-label w_a">跨地区</label>
+                    </div>
+                    <div class="weui-cell__bd t_a_r">
+                        <input type="radio" value="1" name="addr" checked/>是
+                        <input type="radio" value="0" name="addr" />否
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15" id="select_car">
+                    <div class="weui-cell__hd weui-flex__item">
+                        <label class="weui-label ">车辆</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <div class="weui-cell__ft">请选择</div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15" id="select_driver">
+                    <div class="weui-cell__hd weui-flex__item">
+                        <label class="weui-label ">驾驶员</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <div class="weui-cell__ft">请选择</div>
+                    </div>
+                </div>
+            </div>
+            <div class="f15 w_100 b_c_w tip">
+                <div class="weui-media-box weui-media-box_text p_b40">
+                    <!-- <h4 class="weui-media-box__title f_w_7">用车</h4> -->
+                    <div class="weui-flex ">
+                        <!-- <div class="weui-cell weui-cell_access"> -->
+                        <h4 class=" weui-flex__item weui-media-box__title f15">
+                            <span style="vertical-align: middle">审批人</span>
+                        </h4>
+                    </div>
+                    <div class="weui-flex">
+                        <div class="weui-flex__item">
+                            <div class="weui-cell p_0">
+                                <div class="weui-cell__hd weui-flex" style="position: relative;">
+                                    <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
+                                    <span class="" style="position: absolute;top:-12px;right: 17px;">
+                                        <i class="weui-icon-cancel icon-delete"></i>
+                                    </span>
+                                    <span class="l_h_40 elli">...</span>
+                                    <span class="addr_book">某某</span>
+                                </div>
+                                <div class="weui-cell__hd weui-flex" style="position: relative;">
+                                    <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
+                                    <span class="" style="position: absolute;top:-12px;right: 17px;">
+                                        <i class="weui-icon-cancel icon-delete"></i>
+                                    </span>
+                                    <span class="l_h_40 elli">...</span>
+                                    <span class="addr_book">某某</span>
+                                </div>
+
+                                <div class="">
+                                    <div class="weui-uploader__input-box phone">
+                                        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" capture="camera" multiple="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m_15">
+                <a href="javascript:;" class="weui-btn weui-btn_primary f15" id="toastBtn">提交</a>
+            </div>
+
+        </div>
+        <div id="submit_success" style="opacity: 0; display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                <p class="weui-toast__content">提交成功</p>
+            </div>
+        </div>
+        <div id="submit_unsuccess" style="opacity: 0; display: none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast">
+                <i class="weui-icon-warn  weui-icon_toast"></i>
+                <p class="weui-toast__content">xxx不能为空</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="./js/weui.js"></script>
+    <script type="text/javascript">
+       
+        var $submit_success = $('#submit_success');
+        $('#toastBtn').on('click', function () {
+            if ($submit_success.css('display') != 'none') return;
+            $submit_success.fadeIn(100);
+            setTimeout(function () {
+                $submit_success.fadeOut(100);
+            }, 3000);
+        });
+        var $submit_unsuccess = $('#submit_unsuccess');
+        $('#toastBtn').on('click', function () {
+            if ($submit_unsuccess.css('display') != 'none') return;
+            $submit_unsuccess.fadeIn(100);
+            setTimeout(function () {
+                $submit_unsuccess.fadeOut(100);
+            }, 3000);
+        });
+        console.log(1)
+
+        $('#showPicker').on('click', function () {
+            weui.picker([
+                {
+                    label: '政治处',
+                    value: '1'
+                }, {
+                    label: '工会',
+                    value: '2'
+                }, {
+                    label: '禁毒大队',
+                    value: '3'
+                }
+            ], [
+                    {
+                        label: '本单位出车',
+                        value: '1'
+                    }, {
+                        label: '向其他单位借车',
+                        value: '2'
+                    }, {
+                        label: '车队派车',
+                        value: '3'
+                    }
+                ], [
+                    {
+                        label: '政治处',
+                        value: '1'
+                    }, {
+                        label: '工会',
+                        value: '2'
+                    }, {
+                        label: '禁毒大队',
+                        value: '3'
+                    }
+                ], {
+                    defaultValue: ['1', '1', '1'],
+                    onChange: function (result) {
+                        console.log(result,'1');
+                    },
+                    onConfirm: function (result) {
+                        console.log(result,'2');
+                    },
+                    id: 'multiPickerBtn'
+                });
+        });
+
+
+        $('#addrPicker').on('click', function () {
+            weui.picker([{
+                label: '广东',
+                value: 0,
+                children: [{
+                    label: '广州',
+                    value: 0,
+                    children: [{
+                        label: '海珠',
+                        value: 0
+                    }, {
+                        label: '番禺',
+                        value: 1
+                    }]
+                }, {
+                    label: '佛山',
+                    value: 1,
+                    children: [{
+                        label: '禅城',
+                        value: 0
+                    }, {
+                        label: '南海',
+                        value: 1
+                    }]
+                }]
+            }, {
+                label: '广西',
+                value: 1,
+                children: [{
+                    label: '南宁',
+                    value: 0,
+                    children: [{
+                        label: '青秀',
+                        value: 0
+                    }, {
+                        label: '兴宁',
+                        value: 1
+                    }]
+                }, {
+                    label: '桂林',
+                    value: 1,
+                    children: [{
+                        label: '象山',
+                        value: 0
+                    }, {
+                        label: '秀峰',
+                        value: 1
+                    }]
+                }]
+            }], {
+                    depth: 3,
+                    defaultValue: [0, 1, 1],
+                    onChange: function onChange(result) {
+                        console.log(result);
+                    },
+                    onConfirm: function onConfirm(result) {
+                        console.log(result);
+                    },
+                    id: 'addrPicker'
+                });
+        });
+
+        var use_reason = ['执法办案', '社会面管理', '重大勤务', '督察检查', '指挥通信', '现场勘查', '押解', '勤务保障', '其他执法执勤']
+        // use_reason.forEach((ele,index) => {
+
+        // })
+        var op_arr = [];
+        for (var i = 0; i < use_reason.length; i++) {
+            var op_i = {};
+            op_i.label = use_reason[i];
+            op_i.value = i + 1;
+            op_arr.push(op_i);
+        }
+        console.log(op_arr)
+        $('#reson_Picker').on('click', function () {
+            weui.picker(op_arr, {
+                defaultValue: ['1'],
+                onChange: function (result) {
+                    console.log(result);
+                },
+                onConfirm: function (result) {
+                    console.log(result);
+                },
+                id: 'reson_Picker'
+            });
+        });
+        $('#select_car').on('click', function () {
+            weui.picker([
+                {
+                    label: '浙C9A228',
+                    value: '1'
+                }, {
+                    label: '浙C9A228(李某某 18325263654)',
+                    value: '2'
+                }, {
+                    label: '浙C9A228',
+                    value: '3'
+                }
+            ], {
+                    defaultValue: ['1'],
+                    onChange: function (result) {
+                        console.log(result);
+                    },
+                    onConfirm: function (result) {
+                        console.log(result);
+                    },
+                    id: 'select_car'
+                });
+        });
+        $('#select_driver').on('click', function () {
+            weui.picker([
+                {
+                    label: '李某某',
+                    value: '1'
+                }, {
+                    label: '张某某',
+                    value: '2'
+                }, {
+                    label: '林某某',
+                    value: '3'
+                }
+            ], {
+                    defaultValue: ['1'],
+                    onChange: function (result) {
+                        console.log(result);
+                    },
+                    onConfirm: function (result) {
+                        console.log(result);
+                    },
+                    id: 'select_driver'
+                });
+        });
+        console.log(location,'111')
+
+    </script>
+    <!-- <script src="./js/example.js"></script> -->
+</body>
+
+</html>

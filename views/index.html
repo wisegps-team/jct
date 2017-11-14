@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>警车通</title>
+    <link rel="stylesheet" href="./css/weui.css" />
+    <link rel="stylesheet" href="./css/example.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body ontouchstart>
+    <div class="container f15 o_auto" id="container">
+        <div class="page tabbar js_show">
+            <div class="page__bd" style="height: 100%;">
+                <div class="weui-tab" id="tab">
+                    <div class="weui-tab__panel b_c_w">
+                        <!-- 新申请 -->
+                        <div class="weui-tab__content b_c_w">
+                            <div class="weui-grids">
+                                <a href="javascript:;" class="weui-grid">
+                                    <div class="weui-grid__icon">
+                                        <img src="./images/icon_tabbar.png" alt="">
+                                    </div>
+                                    <p class="weui-grid__label">用车</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 我审核的 -->
+                        <div class="weui-tab__content b_c_w" id="audit_list">
+                            <div class="page__bd">
+                                <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
+                                <div class="weui-search-bar" id="searchBar">
+                                    <form class="weui-search-bar__form">
+                                        <div class="weui-search-bar__box">
+                                            <i class="weui-icon-search"></i>
+                                            <input type="search" class="weui-search-bar__input" placeholder="搜索" required="">
+                                            <a href="javascript:" class="weui-icon-clear"></a>
+                                        </div>
+                                        <label class="weui-search-bar__label">
+                                            <i class="weui-icon-search"></i>
+                                            <span>搜索</span>
+                                        </label>
+                                    </form>
+                                    <a href="javascript:" class="weui-search-bar__cancel-btn f15" style="color:#1e7eaf;">取消</a>
+                                </div>
+                                <div class="weui-cells searchbar-result" id="searchResult" style="display: none;">
+
+                                </div>
+                            </div>
+                            <div class="weui-tab1 h_93 b_c_w" id="tab1">
+                                <div class="weui-navbar1">
+                                    <div class="weui-navbar__item1">待处理</div>
+                                    <div class="weui-navbar__item1">已处理</div>
+                                </div>
+                                <div class="weui-tab__panel">
+                                    <div class="weui-tab__content1 b_c_w">
+                                        <a class="weui-cell weui-cell_access p_0 b_b_1" href="javascript:;">
+                                            <div class="f14 w_100">
+                                                <div class="weui-media-box weui-media-box_text">
+                                                    <div class="weui-flex">
+                                                        <h4 class=" weui-flex__item weui-media-box__title f_w_7">
+                                                            <span style="vertical-align: middle">用车</span>
+                                                            <span class="weui-badge great auditing chang_f12" style="margin-left: 5px;">审批中</span>
+                                                        </h4>
+                                                        <div class="weui-flex__item t_a_r">昨天</div>
+                                                    </div>
+
+                                                    <div class="weui-flex">
+                                                        <div class="weui-flex__item">
+                                                            <div class="weui-cell p_0">
+                                                                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                                                    <p class="c_9">事由</p>
+                                                                </div>
+                                                                <div class="weui-cell__bd">
+                                                                    <p>督察检查</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="weui-tab__content1 b_c_w">
+                                        <a class="weui-cell weui-cell_access p_0 b_b_1" href="javascript:;">
+                                            <div class="f14 w_100">
+                                                <div class="weui-media-box weui-media-box_text">
+                                                    <div class="weui-flex">
+                                                        <h4 class=" weui-flex__item weui-media-box__title f_w_7">
+                                                            <span style="vertical-align: middle">用车</span>
+                                                            <span class="weui-badge great chang_f12" style="margin-left: 5px;">已通过</span>
+                                                        </h4>
+                                                        <div class="weui-flex__item t_a_r">昨天</div>
+                                                    </div>
+
+                                                    <div class="weui-flex">
+                                                        <div class="weui-flex__item">
+                                                            <div class="weui-cell p_0">
+                                                                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                                                    <p class="c_9">事由</p>
+                                                                </div>
+                                                                <div class="weui-cell__bd">
+                                                                    <p>督察检查</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 已提交 -->
+                        <div class="weui-tab__content b_c_w" id="my_list">
+                            <div class="page__bd">
+                                <div class="weui-search-bar" id="searchBar">
+                                    <form class="weui-search-bar__form">
+                                        <div class="weui-search-bar__box">
+                                            <i class="weui-icon-search"></i>
+                                            <input type="search" class="weui-search-bar__input" placeholder="搜索" required="">
+                                            <a href="javascript:" class="weui-icon-clear"></a>
+                                        </div>
+                                        <label class="weui-search-bar__label">
+                                            <i class="weui-icon-search"></i>
+                                            <span>搜索</span>
+                                        </label>
+                                    </form>
+                                    <a href="javascript:" class="weui-search-bar__cancel-btn f15" style="color:#1e7eaf;">取消</a>
+                                </div>
+                            </div>
+                            <div class="b_c_w f14">
+                                <a class="weui-cell weui-cell_access p_0 b_b_1" href="javascript:;">
+                                    <div class="f14 w_100">
+                                        <div class="weui-media-box weui-media-box_text">
+                                            <div class="weui-flex">
+                                                <h4 class=" weui-flex__item weui-media-box__title f_w_7">
+                                                    <span style="vertical-align: middle">用车</span>
+                                                    <span class="weui-badge great auditing chang_f12" style="margin-left: 5px;">审批中</span>
+                                                </h4>
+                                                <div class="weui-flex__item t_a_r">昨天</div>
+                                            </div>
+
+                                            <div class="weui-flex">
+                                                <div class="weui-flex__item">
+                                                    <div class="weui-cell p_0">
+                                                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                                            <p class="c_9">事由</p>
+                                                        </div>
+                                                        <div class="weui-cell__bd">
+                                                            <p>督察检查</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-tabbar">
+                        <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+                            <span style="display: inline-block;position: relative;">
+                                <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                                <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
+                            </span>
+                            <p class="weui-tabbar__label">新申请</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label">我审批的</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <span style="display: inline-block;position: relative;">
+                                <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                                <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>
+                            </span>
+                            <p class="weui-tabbar__label">已提交</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="./js/weui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            weui.tab('#tab', {
+                defaultIndex: 0,
+                onChange: function (index) {
+                    console.log(index);
+                }
+            });
+            weui.searchBar('#my_list #searchBar');
+            weui.searchBar('#audit_list #searchBar1');
+
+
+            function tab(selector) {
+                var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+                var $eles = $(selector);
+                console.log($eles);
+                console.log((0, $)(selector))
+
+                var $eles = $(selector);
+                options = $.extend({
+                    defaultIndex: 0,
+                    onChange: $.noop
+                }, options);
+                console.log(options)
+                $eles.forEach(function (ele) {
+                    var $tab = $(ele);
+                    console.log($tab)
+                    var $tabItems = $tab.find('.weui-navbar__item1, .weui-tabbar__item1');
+                    console.log($tabItems)
+                    var $tabContents = $tab.find('.weui-tab__content1');
+                    console.log($tabContents)
+
+                    $tabItems.eq(options.defaultIndex).addClass('weui-bar__item_on');
+                    $tabContents.eq(options.defaultIndex).show();
+
+                    $tabItems.on('click', function () {
+                        var $this = $(this),
+                            index = $this.index();
+
+                        $tabItems.removeClass('weui-bar__item_on');
+                        $this.addClass('weui-bar__item_on');
+
+                        $tabContents.hide();
+                        $tabContents.eq(index).show();
+
+                        options.onChange.call(this, index);
+                    });
+                });
+            }
+            tab('#tab1', {
+                defaultIndex: 0,
+                onChange: function (index) {
+                    console.log(index);
+                }
+            });
+
+            
+
+        })
+    </script>
+    <!-- <script src="./js/example.js"></script> -->
+</body>
+
+</html>
