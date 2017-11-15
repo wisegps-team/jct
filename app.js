@@ -88,4 +88,10 @@ app.use(function(err, req, res, next) {
 });
 
 
+process.on('uncaughtException', function (err) {
+    // console.error(err.stack);
+    // console.log("Node NOT Exiting...");
+});
+
+
 module.exports = app;
