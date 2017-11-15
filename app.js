@@ -46,19 +46,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// db state
 app.use(function(req, res, next) {
     req.con = con;
     next();
 });
 
-// app.use('/', routes);
-// app.use('/users', users);
-// app.use('/oil_stat',oil_stat);
-// app.use('/trip_stat',trip_stat)
 app.use('/',_index);
-app.use('/apply',apply)
-app.use('/grid',_index)
+app.use('/apply',apply);
+// app.use('/grid',_index)
 // app.use('/trip_record',trip_record);
 
 // catch 404 and forward to error handler
