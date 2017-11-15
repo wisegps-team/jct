@@ -18,8 +18,9 @@
                     <div class="weui-tab__panel b_c_w">
                         <!-- 新申请 -->
                         <div class="weui-tab__content b_c_w">
+                            <!-- 九宫格 -->
                             <div class="weui-grids">
-                                <a href="javascript:;" class="weui-grid">
+                                <a href="javascript:;" class="weui-grid" id="use_car">
                                     <div class="weui-grid__icon">
                                         <img src="./images/icon_tabbar.png" alt="">
                                     </div>
@@ -193,65 +194,13 @@
     <script src="./js/zepto.min.js"></script>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="./js/weui.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript">
-        $(function () {
-            weui.tab('#tab', {
-                defaultIndex: 0,
-                onChange: function (index) {
-                    console.log(index);
-                }
-            });
-            weui.searchBar('#my_list #searchBar');
-            weui.searchBar('#audit_list #searchBar1');
+        // window._user = 122
+        // $(function () {
+           
 
-
-            function tab(selector) {
-                var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-                var $eles = $(selector);
-                console.log($eles);
-                console.log((0, $)(selector))
-
-                var $eles = $(selector);
-                options = $.extend({
-                    defaultIndex: 0,
-                    onChange: $.noop
-                }, options);
-                console.log(options)
-                $eles.forEach(function (ele) {
-                    var $tab = $(ele);
-                    console.log($tab)
-                    var $tabItems = $tab.find('.weui-navbar__item1, .weui-tabbar__item1');
-                    console.log($tabItems)
-                    var $tabContents = $tab.find('.weui-tab__content1');
-                    console.log($tabContents)
-
-                    $tabItems.eq(options.defaultIndex).addClass('weui-bar__item_on');
-                    $tabContents.eq(options.defaultIndex).show();
-
-                    $tabItems.on('click', function () {
-                        var $this = $(this),
-                            index = $this.index();
-
-                        $tabItems.removeClass('weui-bar__item_on');
-                        $this.addClass('weui-bar__item_on');
-
-                        $tabContents.hide();
-                        $tabContents.eq(index).show();
-
-                        options.onChange.call(this, index);
-                    });
-                });
-            }
-            tab('#tab1', {
-                defaultIndex: 0,
-                onChange: function (index) {
-                    console.log(index);
-                }
-            });
-
-            
-
-        })
+        // })
     </script>
     <!-- <script src="./js/example.js"></script> -->
 </body>
