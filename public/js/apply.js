@@ -7,16 +7,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
     var all_depart;
     var form_option = {};
     function getJson(url, callback, option, type) {
