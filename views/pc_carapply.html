@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用车</title>
+    <script src="../js/assets/jquery-3.2.1.min.js"></script>
+    <script src="../js/assets/paging.js"></script>
+    <script src="../js/assets/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/weui.css" />
+    <link rel="stylesheet" href="../css/example.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/my_icon/iconfont.css">
+</head>
+
+<body>
+    <div class="container container_1 ">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="position:static">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="">用车</a>
+
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="">
+                                <a href="#" id="Toggle_apply">申请</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉选择
+                                    <strong class="caret"></strong>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li id="ytj">
+                                        <a href="#">已提交</a>
+                                    </li>
+                                    <li id="ysh">
+                                        <a href="#">已审核</a>
+                                    </li>
+                                    <li id="wsh">
+                                        <a href="#">未审核</a>
+                                    </li>
+                                    <li id="cdhc" style="display:none">
+                                        <a href="#">车队还车</a>
+                                    </li>
+                                    <li id="cdpc" style="display:none">
+                                        <a href="#">车队派车</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" />
+                            </div>
+                            <button type="submit" class="btn btn-default">查询</button>
+                        </div>
+                    </div>
+                </nav>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>事由</th>
+                            <th>同行</th>
+                            <th>地址</th>
+                            <th>详细地址</th>
+                            <th>过夜</th>
+                            <th>车辆</th>
+                            <th>驾驶员</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table_info">
+                        <!-- <tr class="info">
+                            <td>
+                                4
+                            </td>
+                            <td>
+                                勤务保障
+                            </td>
+                            <td>
+                                阮俊广
+                            </td>
+                            <td>
+                                浙江省温州市瑞安市
+                            </td>
+                            <td>
+                                详细地址
+                            </td>
+                            <td>
+                                是
+                            </td>
+                            <td>
+                                浙C9A216
+                            </td>
+                            <td>
+                                王永胜
+                            </td>
+                            <td>
+                                撤销
+                            </td>
+                            <td>
+                                <a>详情</a>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <div id="page" class="page_div"></div>
+            </div>
+        </div>
+        <div style="position:fixed;top:0;right:0;width:360px;height:100%;border: 1px solid #CCC;display:none" id="pc_apply">
+            <!-- <div> -->
+
+            <!-- </div> -->
+        </div>
+    </div>
+    <script src="../js/weui.js"></script>
+    <script src="../js/public.js"></script>
+    <script src="../js/pc/car.js"></script>
+</body>
+<script>
+
+</script>
+
+</html>

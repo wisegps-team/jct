@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>车修详情</title>
+    <link rel="stylesheet" href="./css/weui.css" />
+    <link rel="stylesheet" href="./css/example.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body ontouchstart>
+    <div class="container f14 o_auto" id="container" style="display:block">
+        <div class="b_c_w b_b_1" id="show_detail" style="display:none">
+            <div class="weui-cell">
+                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <img src="./img/1.png" style="width: 50px;display: block">
+                    <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span> -->
+                </div>
+                <div class="weui-cell__bd">
+                    <h4 class="weui-media-box__title f_w_7">
+                        <span style="vertical-align: middle" id="name"></span>
+                        <span id="_spstatus_1">
+                            <span class="weui-badge great chang_f12" style="margin-left: 5px;" id="_spstatus">审核中</span>
+                        </span>
+                    </h4>
+                    <div id="sqsj" style="font-size:12px"></div>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">号牌号码</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="hphm"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">号牌种类</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="hpzl"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">申请人</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="sqr"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">预计金额</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="yjje"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <!-- <div class="weui-flex__item"> -->
+                <div class="weui-cell">
+                    <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                        <p class="c_9">维修类型</p>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p id="wxlx"></p>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">申请部门</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="sqbm"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">维修总金额</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="zje"></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">申请时间</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="sqsj"></p>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="weui-flex" id="car_driver">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <!-- <img src="./img/emoji-1.png" style="width: 50px;display: block"> -->
+                            <p class="c_9">当前流程</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="dqlc"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">下个流程</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="xglc"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex" id="car_driver">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <!-- <img src="./img/emoji-1.png" style="width: 50px;display: block"> -->
+                            <p class="c_9">维修单位</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="wxdw"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">修理厂电话</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="wxdwdh"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 输入日期后显示 -->
+            <div style="display:block" id="push_detail">
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                <!-- <img src="./img/emoji-1.png" style="width: 50px;display: block"> -->
+                                <p class="c_9">进厂日期</p>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p id="jcrq">2017-11-27</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                <p class="c_9">出厂日期</p>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p id="ccrq">2017-11-27</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex">
+                    <div class="weui-flex__item">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                <!-- <img src="./img/emoji-1.png" style="width: 50px;display: block"> -->
+                                <p class="c_9">记账人</p>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p id="jzr_1">某某某</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-flex__item">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                                <p class="c_9">结算人</p>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <p id="jsr_1">某某某</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 进厂时间和出厂时间 -->
+        <div id="jccsj" style="display:none">
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f15" id="jcrq1">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">进厂日期</span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f15" id="ccrq1">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">出厂日期</span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">记账人</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="jzr">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">结算人</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="jsr">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="weui-cells tip" id="zgy" style="display: none;">
+            <div class="weui-cell f15">
+                <div class="weui-cell__hd weui-flex__item">
+                    <label class="weui-label w_a">转交专管员审核</label>
+                </div>
+                <div class="weui-cell__bd t_a_r">
+                    <input type="radio" value="1" name="zgy1">是
+                    <input type="radio" value="0" name="zgy1" checked>否
+                </div>
+            </div>
+        </div>
+
+        <div class="b_c_w tip" style="margin-top:15px;display:none" id="show_auditer">
+            <div class="advice flow">审批流程</div>
+            <div id="auditer">
+
+            </div>
+        </div>
+
+
+        <div class="clli" id="show_clli" style="display:block;margin-top:15px;margin-bottom:116px">
+            <!-- <div class="weui-flex" style="background:#cccccc47;line-height:2">
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">类别</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">材料名称</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">金额</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">操作</div>
+                </div>
+            </div>
+            <div class="weui-flex" style="line-height:2">
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">${_lb}</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">${ele.XMMC}</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">${ele.JE}</div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder t_a_c">
+                        <input type='button' value="详情" id=xq_${index} />
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+
+        <div class="b_c_w submit b_t_1" id="other_button" style="display:none">
+            <div class="advice c_9">审批意见</div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="agree">
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 同意
+                        </div>
+                    </a>
+                </div>
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="reject">
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-cancel f14"></i> 驳回
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="b_c_w submit b_t_1" style="display:block" id="my_button">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id='urge'>
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 催办
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="backout">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-cancel f14"></i> 撤销
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+                <div class="weui-flex__item" style="display:none" id="tjrq">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-circle f14"></i> 提交日期
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 维修明细 -->
+    <div class="container f15 o_auto" id="repair_info" style="display:none">
+        <div class="b_c_w">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">项目名称</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="detail_xmmc">车灯</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">项目编号</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="detail_xmbh">122</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">类别</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="detail_lb">工时费</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">数量</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="detail_sl">2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">单价</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="detail_dj">34</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">金额</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="detail_je">68</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/zepto.min.js"></script>
+    <!-- <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script src="./js/weui.js"></script>
+    <script src="./js/public.js"></script>
+    <script src="./js/fix_detail.js"></script>
+    <!-- <script src="./js/my_list.js"></script> -->
+</body>
+
+</html>
