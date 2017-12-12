@@ -1,3 +1,4 @@
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,34 +9,37 @@ var ejs = require('ejs');
 
 var _index = require('./routes/index');
 var apply = require('./routes/apply');
+var fix = require('./routes/fix');
+var pc = require('./routes/pc');
+var mysql_api = require('./routes/mysql_api')
 // var oil_stat = require('./routes/oil_stat');
 // var trip_stat = require('./routes/trip_stat');
 // var trip_record = require('./routes/trip_record')
 // // DataBase 
 var mysql = require("mysql");
 
-var con = mysql.createConnection({
+var con = mysql.createPool({
     host: "582c1a40635ca.sh.cdb.myqcloud.com",
-    port:'5079',
+    port: '5079',
     user: "ruian",
     password: "ruian123",
     database: "ruian"
 });
 
-con.connect(function(err) {
-    if (err) {
-        console.log('connecting error');
-        return;
-    }
-    console.log('connecting success');
-});
+// con.connect(function(err) {
+//     if (err) {
+//         console.log('connecting error');
+//         return;
+//     }
+//     console.log('connecting success');
+// });
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'ejs');
-app.engine('html',ejs.__express);
+app.engine('html', ejs.__express);
 app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
@@ -46,13 +50,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     req.con = con;
     next();
 });
 
-app.use('/',_index);
-app.use('/apply',apply);
+app.use('/', _index);
+app.use('/apply', apply);
+app.use('/fix_apply', fix)
+app.use('/pc', pc)
+app.use('/mysql_api',mysql_api)
 // app.use('/grid',_index)
 // app.use('/trip_record',trip_record);
 
@@ -68,7 +75,7 @@ app.use('/apply',apply);
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -77,20 +84,19 @@ if (app.get('env') === 'development') {
     });
 }
 
+process.on('uncaughtException', function (err) {
+    // console.error(err.stack);
+    // console.log("Node NOT Exiting...");
+});
+
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
         error: {}
     });
-});
-
-
-process.on('uncaughtException', function (err) {
-    // console.error(err.stack);
-    // console.log("Node NOT Exiting...");
 });
 
 
