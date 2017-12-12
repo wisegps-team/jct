@@ -1,12 +1,299 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>用车详情</title>
+    <link rel="stylesheet" href="./css/weui.css" />
+    <link rel="stylesheet" href="./css/example.css" />
+    <link rel="stylesheet" href="./css/main.css" />
 </head>
-<body>
-    
+
+<body ontouchstart>
+    <div class="container f14" id="container" style="display:none">
+        <div class="b_c_w b_b_1">
+            <div class="weui-cell">
+                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <img src="./img/1.png" style="width: 50px;display: block">
+                    <!-- <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span> -->
+                </div>
+                <div class="weui-cell__bd">
+                    <h4 class="weui-media-box__title f_w_7" >
+                        <span style="vertical-align: middle" id="name">我的用车</span>
+                        <span id="_spstatus_1">
+                           
+                        </span>
+                    </h4>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">事由</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="days"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">同行</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="peer"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex">
+                <!-- <div class="weui-flex__item"> -->
+                <div class="weui-cell">
+                    <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                        <p class="c_9">地址</p>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p id="province"></p>
+                    </div>
+                </div>
+                <!-- </div> -->
+
+            </div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">详细地址</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="address"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">是否在外过夜</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="night"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-flex" id="car_driver">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <!-- <img src="./img/emoji-1.png" style="width: 50px;display: block"> -->
+                            <p class="c_9">车辆</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="car_num"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <p class="c_9">驾驶员</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="driver"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-flex" id="use_car" style="display:none">
+                <div class="weui-flex__item">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <!-- <img src="./img/emoji-1.png" style="width: 50px;display: block"> -->
+                            <p class="c_9">车辆</p>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p id="cars"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 选择车辆和驾驶员 -->
+        <div id="pcar_driver" style="display:none">
+            <div class="weui-cells tip">
+                <div class="weui-cell weui-cell_access f15" id="select_car">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">车辆</span>
+                    </div>
+                    <div class="weui-cell__ft" id="carss">请选择</div>
+                </div>
+            </div>
+            <div class="weui-cells tip">
+                <div class="weui-cell f15" id="select_driver">
+                    <div class="weui-cell__hd weui-flex__item">
+                        <label class="weui-label ">驾驶员</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <div class="weui-cell__ft" id="driverss">请选择</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="b_c_w tip" style="margin-top:5px">
+            <div class="advice flow">审批流程</div>
+            <div id="auditer">
+
+            </div>
+            <!-- <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell weui-cell_access p_0 ">
+                        <div class="flow_agree weui-media-box_text w_100">
+                            <i class="weui-icon-circle f14 flow_agree_icon"></i>
+                            <img src="./img/emoji-1.png" class="small_img">
+                            <span class="f_w_7 ">某某某·审批中</span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="weui-cell weui-cell_access p_0 ">
+                        <div class="f14">
+                        <div class="flow_agree weui-media-box_text w_100">
+                            <i class="weui-icon-circle f14 flow_agree_icon"></i>
+                            <img src="./img/emoji-1.png" class="small_img">
+                            <span class="f_w_7 ">某某某·审批中</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="b_c_w submit b_t_1" id="other_button" style="display:none">
+            <div class="advice c_9">审批意见</div>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="agree">
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 同意
+                        </div>
+                    </a>
+                </div>
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="reject">
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-cancel f14"></i> 驳回
+                        </div>
+                    </a>
+                </div>
+                <!-- <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;">
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-circle f14"></i> 转审
+                        </div>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+        <div class="b_c_w submit b_t_1" style="display:none" id="my_button">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id='urge'>
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 催办
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="backout">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-cancel f14"></i> 撤销
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+                <div class="weui-flex__item" style="display:none">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-circle f14"></i> 重新提交
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="b_c_w submit b_t_1" style="display:none" id="back_car">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="backout_car">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 申请还车
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="b_c_w submit b_t_1" style="display:none" id="carlist_back">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 车队还车
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="b_c_w submit b_t_1" style="display:none" id="back_carlist">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 还车
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="b_c_w submit b_t_1" style="display:none" id="pcar_dd">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="pcar_dd1">
+                        <!-- <div class="f14"> -->
+                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
+                            <i class="weui-icon-success-no-circle f14"></i> 派车
+                        </div>
+                        <!-- </div> -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/zepto.min.js"></script>
+    <!-- <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script src="./js/weui.js"></script>
+    <script src="./js/public.js"></script>
+    <script src="./js/my_list.js">
+        // console.log(_g)
+    </script>
 </body>
+
 </html>

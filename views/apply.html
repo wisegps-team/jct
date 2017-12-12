@@ -27,7 +27,7 @@
             <div class="weui-cells tip">
                 <div class="weui-cell f15">
                     <div class="weui-cell__hd">
-                        <label class="weui-label">同行</label>
+                        <label class="weui-label">同行人</label>
                     </div>
                     <div class="weui-cell__bd">
                         <input class="weui-input t_a_r" placeholder="请输入" id="peer">
@@ -46,7 +46,7 @@
             </div> -->
 
             <!-- 用车 -->
-            <div class="weui-cells tip">
+            <div class="weui-cells tip" style="display:none">
                 <div class="weui-cell weui-cell_access f15" id="borrow">
                     <div class="weui-cell__bd">
                         <span style="vertical-align: middle">用车</span>
@@ -101,7 +101,7 @@
                             <label class="weui-label">驾驶人</label>
                         </div>
                         <div class="weui-cell__bd">
-                            <input class="weui-input t_a_r" placeholder="请输入" id="user">
+                            <input class="weui-input t_a_r" placeholder="请输入" id="driver">
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                         <label class="weui-label">详细地址</label>
                     </div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input t_a_r" placeholder="请输入" id="det_addr">
+                        <input class="weui-input t_a_r" placeholder="请输入" id="deta_addr">
                     </div>
                 </div>
             </div>
@@ -140,20 +140,20 @@
             </div>
 
             <!-- 过夜 -->
-            <div class="weui-cells tip">
+            <div class="weui-cells tip" id="night" style="display:none">
                 <div class="weui-cell f15">
                     <div class="weui-cell__hd weui-flex__item">
                         <label class="weui-label w_a">过夜</label>
                     </div>
                     <div class="weui-cell__bd t_a_r">
-                        <input type="radio" value="1" name="order" checked/>是
-                        <input type="radio" value="0" name="order" />否
+                        <input type="radio" value="1" name="order" />是
+                        <input type="radio" value="0" name="order" checked/>否
                     </div>
                 </div>
             </div>
 
             <!-- 跨地区 -->
-            <div class="weui-cells tip">
+            <!-- <div class="weui-cells tip">
                 <div class="weui-cell f15">
                     <div class="weui-cell__hd weui-flex__item">
                         <label class="weui-label w_a">跨地区</label>
@@ -163,11 +163,11 @@
                         <input type="radio" value="0" name="addr" />否
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
 
-            <div class="f15 w_100 b_c_w tip">
+            <div class="f15 w_100 b_c_w tip" id="auditer" style="display:none">
                 <div class="weui-media-box weui-media-box_text p_b40">
                     <div class="weui-flex ">
                         <h4 class=" weui-flex__item weui-media-box__title f15">
@@ -177,22 +177,25 @@
                     <div class="weui-flex">
                         <div class="weui-flex__item">
                             <div class="weui-cell p_0">
-                                <!-- <div class="weui-cell__hd weui-flex" style="position: relative;">
-                                    <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
-                                    <span class="" style="position: absolute;top:-12px;right: 17px;">
+                                <div id="add_auditer" class="weui-cell p_0">
+                                    <!-- <div class="weui-cell__hd weui-flex" style="position: relative;">
+                                        <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
+                                        <span class="" style="position: absolute;top:-12px;right: 17px;">
                                         <i class="weui-icon-cancel icon-delete"></i>
                                     </span>
-                                    <span class="l_h_40 elli">...</span>
-                                    <span class="addr_book">某某</span>
-                                </div> -->
-                                <!-- <div class="weui-cell__hd weui-flex" style="position: relative;">
-                                    <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
-                                    <span class="" style="position: absolute;top:-12px;right: 17px;">
+                                        <span class="l_h_40 elli">...</span>
+                                        <span class="addr_book">某某</span>
+                                    </div>
+                                    <div class="weui-cell__hd weui-flex" style="position: relative;">
+                                        <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
+                                        <span class="" style="position: absolute;top:-12px;right: 17px;">
                                         <i class="weui-icon-cancel icon-delete"></i>
                                     </span>
-                                    <span class="l_h_40 elli">...</span>
-                                    <span class="addr_book">某某</span>
-                                </div> -->
+                                        <span class="l_h_40 elli">...</span>
+                                        <span class="addr_book">某某</span>
+                                    </div> -->
+                                </div>
+
 
                                 <div class="">
                                     <div class="weui-uploader__input-box phone">
@@ -200,6 +203,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- <div class="">
+                                <div class="weui-uploader__input-box phone">
+                                    <input id="audit_user" class="weui-uploader__input" multiple="">
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -209,30 +217,36 @@
             </div>
 
         </div>
-        <div id="submit_success" style="opacity: 0; display: none;">
+        <!-- <div id="submit_success" style="opacity: 0; display: none;">
             <div class="weui-mask_transparent"></div>
             <div class="weui-toast">
                 <i class="weui-icon-success-no-circle weui-icon_toast"></i>
                 <p class="weui-toast__content">提交成功</p>
             </div>
-        </div>
-        <div id="submit_unsuccess" style="opacity: 0; display: none;">
+        </div> -->
+        <!-- <div id="submit_unsuccess" style="opacity: 0; display: none;">
             <div class="weui-mask_transparent"></div>
             <div class="weui-toast">
                 <i class="weui-icon-warn  weui-icon_toast"></i>
                 <p class="weui-toast__content">xxx不能为空</p>
             </div>
-        </div>
+        </div> -->
 
 
     </div>
 
     <div class="container f15 o_auto" id="audit_list" style="display:none">
-
+        <!-- <div class="weui-flex">
+            <div class="weui-flex_item">1</div>
+        </div>
+        <div class="weui-flex">
+            <div class="weui-flex_item">1</div>
+        </div> -->
     </div>
     <script src="./js/zepto.min.js"></script>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="./js/weui.js"></script>
+    <script src="./js/public.js"></script>
     <script type="text/javascript" src="./js/apply.js"></script>
     <!-- <script src="./js/example.js"></script> -->
 </body>

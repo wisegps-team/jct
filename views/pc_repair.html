@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>车修</title>
+    <script src="../js/assets/jquery-3.2.1.min.js"></script>
+    <script src="../js/assets/paging.js"></script>
+    <script src="../js/assets/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../js/assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/weui.css" />
+    <link rel="stylesheet" href="../css/example.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/my_icon/iconfont.css">
+
+</head>
+
+<body>
+    <div class="container container_1 " style="overflow-y:auto">
+        <!-- <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="#">
+                    </a>
+
+                    <div class="nav-collapse collapse">
+                        <p class="navbar-text pull-right">
+                            <a id="notify" class="icon-envelope" href="/alert">
+                                <span id="alertBadge" class="badge badge-important">..</span>
+                            </a>
+                            <a id="dealer_name" href="#" class="navbar-link"></a>
+                            <a id="btnExit" href="#" class="navbar-link" data-i18n="header.exit">
+
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="position:static">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="">车修</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="">
+                                <a href="#" id="Toggle_apply">申请</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉选择
+                                    <strong class="caret"></strong>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li id="ytj">
+                                        <a href="#">已提交</a>
+                                    </li>
+                                    <li id="ysh">
+                                        <a href="#">已审核</a>
+                                    </li>
+                                    <li id="wsh">
+                                        <a href="#">未审核</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" />
+                            </div>
+                            <button type="submit" class="btn btn-default">查询</button>
+                        </form>
+                    </div>
+                </nav>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>编号</th>
+                            <th>号码号牌</th>
+                            <th>号牌种类</th>
+                            <th>维修类型</th>
+                            <th>预计金额</th>
+                            <th>申请人</th>
+                            <th>申请时间</th>
+                            <th>状态</th>
+                            <th>当前流程</th>
+                            <th>下个流程</th>
+                            <th>总金额</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="repair_info">
+                        <!-- <tr class="info">
+                            <td> 1</td>
+                            <td> 浙C0123警 </td>
+                            <td>小型汽车</td>
+                            <td>其他</td>
+                            <td>3000以上</td>
+                            <td>专管员</td>
+                            <td>2017-12-04</td>
+                            <td> 审批中</td>
+                            <td>维修申请</td>
+                            <td>科所队审批 </td>
+                            <td>122 </td>
+                            <td><a>详情</a></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <div id="page" class="page_div"></div>
+            </div>
+        </div>
+        <div style="position:fixed;top:0;right:0;width:360px;height:100%;border: 1px solid #CCC;display:none" id="pc_fix_apply">
+            <!-- <div> -->
+            <!-- <div style="height:9%;background:#4984de">
+                    <span style="display:inline-block;height:100%;width:20%" id="back_apply">
+                        <i class="iconfont icon-fanhui apply_back"></i>
+                    </span>
+                </div>
+                <iframe frameborder=0 width="100%" height="91%" marginheight=0 marginwidth=0 scrolling=no src="../fix_apply"></iframe> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <script src="../js/weui.js"></script>
+    <script src="../js/public.js"></script>
+    <script src="../js/pc/repair.js"></script>
+</body>
+<script>
+
+</script>
+
+</html>
