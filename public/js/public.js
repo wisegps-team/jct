@@ -93,22 +93,21 @@ W.date = function (str) {
     return date;
 }
 
-W.getBeforeDate = function(n){
+W.getBeforeDate = function (n) {
     var now = new Date();
     var aftertime = new Date(n);
     var year = now.getFullYear();
-    var mon= now.getMonth()+1;
-    var day= now.getDate();
+    var mon = now.getMonth() + 1;
+    var day = now.getDate();
     var year_after = aftertime.getFullYear();
-    var mon_after = aftertime.getMonth()+1;
+    var mon_after = aftertime.getMonth() + 1;
     var day_after = aftertime.getDate();
     var chs = 0;
     //获取当月的天数
-    function DayNumOfMonth(Year,Month)
-    {
-        return 32 - new Date(Year,Month-1,32).getDate();
+    function DayNumOfMonth(Year, Month) {
+        return 32 - new Date(Year, Month - 1, 32).getDate();
     }
-    if(aftertime.getTime() - now.getTime() < 0){
+    if (aftertime.getTime() - now.getTime() < 0) {
         var temp1 = day_after;
         var temp2 = mon_after;
         var temp3 = year_after;
@@ -119,37 +118,37 @@ W.getBeforeDate = function(n){
         mon = temp2;
         year = temp3;
     }
-    if(year == year_after){//不跨年
-        if(mon == mon_after){//不跨年不跨月
-            chs += day_after-day;
-        }else{//不跨年跨月
-            chs += DayNumOfMonth(year,mon)- day+1;//加上第一个不满的
-            for(var i=1;i< mon_after-mon;i++){
-                chs += DayNumOfMonth(year,mon+i);
+    if (year == year_after) {//不跨年
+        if (mon == mon_after) {//不跨年不跨月
+            chs += day_after - day;
+        } else {//不跨年跨月
+            chs += DayNumOfMonth(year, mon) - day + 1;//加上第一个不满的
+            for (var i = 1; i < mon_after - mon; i++) {
+                chs += DayNumOfMonth(year, mon + i);
             }
-            chs += day_after-1;//加上
-        }    
-    }else{//存在跨年
-        chs += DayNumOfMonth(year,mon)- day+1;//加上开始年份不满的一个月
-        for(var m=1;m<12-mon;m++){
-            chs += DayNumOfMonth(year,mon+m);
+            chs += day_after - 1;//加上
         }
-        for(var j=1;j < year_after-year;j++){
-            if((year+j)%400 == 0 || (year+j)%4 == 0 && (year+j)%100 != 0){
+    } else {//存在跨年
+        chs += DayNumOfMonth(year, mon) - day + 1;//加上开始年份不满的一个月
+        for (var m = 1; m < 12 - mon; m++) {
+            chs += DayNumOfMonth(year, mon + m);
+        }
+        for (var j = 1; j < year_after - year; j++) {
+            if ((year + j) % 400 == 0 || (year + j) % 4 == 0 && (year + j) % 100 != 0) {
                 chs += 366;
-            }else{
+            } else {
                 chs += 365;
             }
         }
-        for(var n=1;n <= mon_after;n++){
-            chs += DayNumOfMonth(year_after,n);
+        for (var n = 1; n <= mon_after; n++) {
+            chs += DayNumOfMonth(year_after, n);
         }
-        chs += day_after-1;
+        chs += day_after - 1;
     }
-    if(aftertime.getTime() - now.getTime() < 0){
+    if (aftertime.getTime() - now.getTime() < 0) {
         return -chs;
-    }else{
-         return chs;
+    } else {
+        return chs;
     }
 }
 
@@ -275,4 +274,101 @@ W.getJSON = function (url, data, success) {
         }
     };
     W.ajax(url, options);
+}
+W.$ajax = function (url, data, success) {
+    var data_s = {
+        limit: -1,
+        pageno: 20,
+        sorts: 'id'
+    }
+    Object.assign(data_s, data)
+    var option = {
+        url: url,
+        data: data_s,
+        dataType: "json",
+        type: 'get',
+        timeout: 10000,
+        success: success,
+        error: function (xhr, type, errorThrown) {
+            console.log(type + "___url:" + url);
+        }
+    }
+    $.ajax(option)
+}
+
+function ajax_function(obj) {
+    var datas = JSON.stringify(obj.data);
+    $.ajax({
+        url: obj.url,
+        type: obj.type,
+        dataType: "json",
+        data: obj.data,
+        async: true,
+        timeout: 10000,
+        success: obj.success,
+        error: obj.error
+    });
+}
+
+
+//文本框聚焦光标位置 0开头-1末尾
+W.set_text_value_position = function (obj, spos) {
+    var tobj = document.getElementById(obj);
+    if (spos < 0)
+        spos = tobj.value.length;
+    if (tobj.setSelectionRange) { //兼容火狐,谷歌  
+        setTimeout(function () {
+            tobj.setSelectionRange(spos, spos);
+            tobj.focus();
+        }
+            , 0);
+    } else if (tobj.createTextRange) { //兼容IE  
+        var rng = tobj.createTextRange();
+        rng.move('character', spos);
+        rng.select();
+    }
+}
+
+W.tab = function (selector) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var _class = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+    var $eles = $(selector);
+    // console.log($eles)
+
+    options = $.extend({
+        defaultIndex: 0,
+        onChange: $.noop
+    }, options);
+
+    _class = $.extend({
+        c1: ".weui-navbar__item",
+        c2: ".weui-tabbar__item",
+        c3: ".weui-tab__content"
+    },_class)
+
+    $eles.forEach(function (ele) {
+        var $tab = $(ele);
+        // console.log(ele, $tab)
+
+        var $tabItems = $tab.find(_class.c1 + ',' + _class.c2);
+        // console.log($tabItems)
+        var $tabContents = $tab.find(_class.c3);
+
+        $tabItems.eq(options.defaultIndex).addClass('weui-bar__item_on');
+        $tabContents.eq(options.defaultIndex).show();
+
+        $tabItems.on('click', function () {
+            var $this = $(this),
+                index = $this.index();
+
+            $tabItems.removeClass('weui-bar__item_on');
+            $this.addClass('weui-bar__item_on');
+
+            $tabContents.hide();
+            $tabContents.eq(index).show();
+
+            options.onChange.call(this, index);
+        });
+    });
 }

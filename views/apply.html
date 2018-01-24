@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
-    <title>用车</title>
+    <title>用车申请</title>
     <link rel="stylesheet" href="./css/weui.css" />
     <link rel="stylesheet" href="./css/example.css" />
     <link rel="stylesheet" href="./css/main.css" />
@@ -14,17 +14,31 @@
     <div class="container f15 o_auto" id="container">
         <div>
             <!-- 使用人 -->
-            <div class="weui-cells tip">
+            <div class="weui-cells tip" id="usershow">
                 <div class="weui-cell f15">
                     <div class="weui-cell__hd">
-                        <label class="weui-label">使用人</label>
+                        <label class="weui-label">使用人
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </label>
                     </div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input t_a_r" placeholder="请输入" id="user">
+                        <input class="weui-input t_a_r" placeholder="" id="user">
+                    </div>
+                    <div class="weui-cell__bd weui-cell_access" style="border-left:1px solid #ccc;display:none" id="jldselectshow">
+                        <div class="weui-cell__ft">请选择</div>
                     </div>
                 </div>
             </div>
-            <div class="weui-cells tip">
+            <!-- <div class="weui-cells tip" style="display:none">
+                <div class="weui-cell weui-cell_access f15" id="jldselectshow">
+                    <div class="weui-cell__bd">
+                        <span style="vertical-align: middle">
+                        </span>
+                    </div>
+                    <div class="weui-cell__ft">请选择</div>
+                </div>
+            </div> -->
+            <div class="weui-cells tip" id="peershow">
                 <div class="weui-cell f15">
                     <div class="weui-cell__hd">
                         <label class="weui-label">同行人</label>
@@ -49,7 +63,9 @@
             <div class="weui-cells tip" style="display:none">
                 <div class="weui-cell weui-cell_access f15" id="borrow">
                     <div class="weui-cell__bd">
-                        <span style="vertical-align: middle">用车</span>
+                        <span style="vertical-align: middle">用车
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </span>
                     </div>
                     <div class="weui-cell__ft">请选择</div>
                 </div>
@@ -59,7 +75,9 @@
             <div class="weui-cells tip" id="borrow_depart1" style="display:none">
                 <div class="weui-cell weui-cell_access f15" id="borrow_depart">
                     <div class="weui-cell__bd">
-                        <span style="vertical-align: middle">借车部门</span>
+                        <span style="vertical-align: middle">借车部门
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </span>
                     </div>
                     <div class="weui-cell__ft">请选择</div>
                 </div>
@@ -67,20 +85,12 @@
 
             <!-- 选择车辆和驾驶员 -->
             <div id="car_driver" style="display:none">
-                <!-- <div class="weui-cells tip">
-                    <div class="weui-cell f15" id="select_car">
-                        <div class="weui-cell__hd weui-flex__item">
-                            <label class="weui-label ">车辆</label>
-                        </div>
-                        <div class="weui-cell__bd">
-                            <div class="weui-cell__ft">请选择</div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="weui-cells tip">
                     <div class="weui-cell weui-cell_access f15" id="select_car">
                         <div class="weui-cell__bd">
-                            <span style="vertical-align: middle">车辆</span>
+                            <span style="vertical-align: middle">车辆
+                                <span style="color:red;position:relative;top:2px">*</span>
+                            </span>
                         </div>
                         <div class="weui-cell__ft">请选择</div>
                     </div>
@@ -98,7 +108,9 @@
                 <div class="weui-cells tip">
                     <div class="weui-cell f15">
                         <div class="weui-cell__hd">
-                            <label class="weui-label">驾驶人</label>
+                            <label class="weui-label">驾驶员
+                                <span style="color:red;position:relative;top:2px">*</span>
+                            </label>
                         </div>
                         <div class="weui-cell__bd">
                             <input class="weui-input t_a_r" placeholder="请输入" id="driver">
@@ -111,14 +123,42 @@
             <div class="weui-cells tip">
                 <div class="weui-cell weui-cell_access f15" id="address">
                     <div class="weui-cell__bd">
-                        <span style="vertical-align: middle">地址</span>
+                        <span style="vertical-align: middle">地址
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </span>
                     </div>
                     <div class="weui-cell__ft">请选择</div>
                 </div>
             </div>
-
+            <!-- 局领导专用 -->
+            <div class="weui-cells tip" style="display:none">
+                <div class="weui_cell_replace weui-cell_access f12" id="address2">
+                    <div class="weui-cell__bd">
+                        <!-- <span style="vertical-align: middle">地址</span> -->
+                    </div>
+                    <div class="weui-cell__bd t_a_r" style="flex:4">
+                        <input id="rui" type="radio" value="瑞安区域" name="address2" checked style="position: relative;top: 2px; margin-right: 5px;"
+                        />
+                        <label for="rui">瑞安区域</label>
+                    </div>
+                </div>
+                <div class="weui_cell_replace weui-cell_access f12" id="address2">
+                    <div class="weui-cell__bd"><span style="vertical-align: middle">地址</span> </div>
+                    <div class="weui-cell__bd t_a_r" style="flex:4">
+                        <input id="wen" type="radio" value="温州区域" name="address2" style="position: relative;top: 2px; margin-right: 5px;" />
+                        <label for="wen">温州区域</label>
+                    </div>
+                </div>
+                <div class="weui_cell_replace weui-cell_access f12" id="address2">
+                    <div class="weui-cell__bd"> </div>
+                    <div class="weui-cell__bd t_a_r" style="flex:4">
+                        <input id="cwen" type="radio" value="出温州区域" name="address2" style="position: relative;top: 2px; margin-right: 5px;" />
+                        <label for="cwen">出温州区域</label>
+                    </div>
+                </div>
+            </div>
             <!-- 详细地址 -->
-            <div class="weui-cells tip">
+            <div class="weui-cells tip" id="address1">
                 <div class="weui-cell f15">
                     <div class="weui-cell__hd">
                         <label class="weui-label">详细地址</label>
@@ -133,7 +173,9 @@
             <div class="weui-cells tip">
                 <div class="weui-cell weui-cell_access f15" id="reason">
                     <div class="weui-cell__bd">
-                        <span style="vertical-align: middle">事由</span>
+                        <span style="vertical-align: middle">事由
+                            <span style="color:red;position:relative;top:2px">*</span>
+                        </span>
                     </div>
                     <div class="weui-cell__ft">请选择</div>
                 </div>
@@ -152,22 +194,10 @@
                 </div>
             </div>
 
-            <!-- 跨地区 -->
-            <!-- <div class="weui-cells tip">
-                <div class="weui-cell f15">
-                    <div class="weui-cell__hd weui-flex__item">
-                        <label class="weui-label w_a">跨地区</label>
-                    </div>
-                    <div class="weui-cell__bd t_a_r">
-                        <input type="radio" value="1" name="addr" checked/>是
-                        <input type="radio" value="0" name="addr" />否
-                    </div>
-                </div>
-            </div> -->
 
 
 
-            <div class="f15 w_100 b_c_w tip" id="auditer" style="display:none">
+            <!-- <div class="f15 w_100 b_c_w tip" id="auditer" style="display:none">
                 <div class="weui-media-box weui-media-box_text p_b40">
                     <div class="weui-flex ">
                         <h4 class=" weui-flex__item weui-media-box__title f15">
@@ -178,22 +208,7 @@
                         <div class="weui-flex__item">
                             <div class="weui-cell p_0">
                                 <div id="add_auditer" class="weui-cell p_0">
-                                    <!-- <div class="weui-cell__hd weui-flex" style="position: relative;">
-                                        <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
-                                        <span class="" style="position: absolute;top:-12px;right: 17px;">
-                                        <i class="weui-icon-cancel icon-delete"></i>
-                                    </span>
-                                        <span class="l_h_40 elli">...</span>
-                                        <span class="addr_book">某某</span>
-                                    </div>
-                                    <div class="weui-cell__hd weui-flex" style="position: relative;">
-                                        <img src="https://weui.io/work/images/pic_160.png" class="" style="height:50px;width: 50px;display: block">
-                                        <span class="" style="position: absolute;top:-12px;right: 17px;">
-                                        <i class="weui-icon-cancel icon-delete"></i>
-                                    </span>
-                                        <span class="l_h_40 elli">...</span>
-                                        <span class="addr_book">某某</span>
-                                    </div> -->
+                                    
                                 </div>
 
 
@@ -203,12 +218,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="">
-                                <div class="weui-uploader__input-box phone">
-                                    <input id="audit_user" class="weui-uploader__input" multiple="">
-                                </div>
-                            </div> -->
                         </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="f15 w_100 b_c_w tip" id="auditer" style="display:none">
+                <div class="weui-media-box weui-media-box_text ">
+                    <div class="weui-flex ">
+                        <h4 class=" weui-flex__item weui-media-box__title f15">
+                            <span style="vertical-align: middle">审批人</span>
+                        </h4>
+                    </div>
+                    <div class="" id="addauditeres">
+                        <!-- <input type="checkbox" />某某某一
+                        <input type="checkbox" />某某某二
+                        <input type="checkbox" />某某某三
+                        <input type="checkbox" />某某某一
+                        <input type="checkbox" />某某某二
+                        <input type="checkbox" />某某某三
+                        <input type="checkbox" />某某某一
+                        <input type="checkbox" />某某某二
+                        <input type="checkbox" />某某某三 -->
+                    </div>
+                    <div>
+                        <input type="checkbox" id="changeselect" value="1" />
+                        <label for="changeselect">全选/不选</label>
                     </div>
                 </div>
             </div>
@@ -244,10 +278,13 @@
         </div> -->
     </div>
     <script src="./js/zepto.min.js"></script>
-    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="./js/weui.js"></script>
+    <script src="js/wistorm/md5.js"></script>
     <script src="./js/public.js"></script>
+    <script src="js/wistorm/wistorm.js"></script>
     <script type="text/javascript" src="./js/apply.js"></script>
+
+
     <!-- <script src="./js/example.js"></script> -->
 </body>
 

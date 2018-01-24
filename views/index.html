@@ -21,7 +21,7 @@
                         <div class="weui-tab__content b_c_w">
                             <!-- 九宫格 -->
                             <div class="weui-grids">
-                                <a href="javascript:;" class="weui-grid" id="use_car">
+                                <a href="./apply" class="weui-grid" id="use_car">
                                     <div class="weui-grid__icon">
                                         <!-- <img src="./img/car.png" alt=""> -->
                                         <i class="icon iconfont icon-che" style="color:#09bb07;font-size:26px"></i>
@@ -36,8 +36,15 @@
                                     </div>
                                     <p class="weui-grid__label">车修</p>
                                 </a>
+                                <a href="./vehicle_accident" class="weui-grid" id="accident">
+                                    <div class="weui-grid__icon">
+                                        <!-- <img src="./img/car.png" alt=""> -->
+                                        <i class="icon iconfont icon-cheliangweixiu" style="color:#0797bb;font-size:26px"></i>
+                                    </div>
+                                    <p class="weui-grid__label">事故申报</p>
+                                </a>
 
-                                <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wwb0e4ffce3f6d8a8f&redirect_uri=http://h5.bibibaba.cn/qy_oauth2.php&response_type=code&scope=snsapi_userinfo&agentid=1000002&state=STATE#wechat_redirect" class="weui-grid" id="fix_car">
+                                <a href="/?again=true" class="weui-grid" id="fix_car">
                                     <div class="weui-grid__icon">
                                         <!-- <img src="./img/car.png" alt=""> -->
                                         <i class="icon iconfont icon-dingbu_zhongxindenglu" style="color:#0797bb;font-size:26px"></i>
@@ -65,9 +72,9 @@
                                     </form>
                                     <a href="javascript:" class="weui-search-bar__cancel-btn f15" style="color:#1e7eaf;">取消</a>
                                 </div>
-                                <div class="weui-cells searchbar-result" id="searchResult" style="display: none;">
+                                <!-- <div class="weui-cells searchbar-result" id="searchResult" style="display: none;">
 
-                                </div>
+                                </div> -->
                             </div>
                             <div class="weui-tab1 h_93 b_c_w" id="tab1">
                                 <div class="weui-navbar1">
@@ -76,39 +83,7 @@
                                 </div>
                                 <div class="weui-tab__panel">
                                     <div class="weui-tab__content1 b_c_w" id="_auditing">
-                                        <!-- <a class="weui-cell weui-cell_access p_0 b_b_1" href="javascript:;">
-                                            <div class="f14 w_100">
-                                                <div class="weui-media-box weui-media-box_text">
-                                                    <div class="weui-flex">
-                                                        <h4 class=" weui-flex__item weui-media-box__title f_w_7">
-                                                            <span style="vertical-align: middle">用车</span>
-                                                            <span class="weui-badge great auditing chang_f12" style="margin-left: 5px;">审批中</span>
-                                                        </h4>
-                                                        <div class="weui-flex__item t_a_r">昨天</div>
-                                                    </div>
 
-                                                    <div class="weui-flex">
-                                                        <div class="weui-flex__item">
-                                                            <div class="weui-cell p_0">
-                                                                <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                                                    <p class="c_9">事由</p>
-                                                                </div>
-                                                                <div class="weui-cell__bd">
-                                                                    <p>督察检查</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a> -->
-                                        <!-- <a class="weui-cell weui-cell_access" href="javascript:;">
-                                            <div class="f14 w_100">
-                                                <div class="t_a_c">
-                                                    更多···
-                                                </div>
-                                            </div>
-                                        </a> -->
                                     </div>
                                     <div class="weui-tab__content1 b_c_w" id="_audited">
 
@@ -117,8 +92,41 @@
                             </div>
                         </div>
 
+                        <div class="weui-tab__content b_c_w" id="audit_list">
+                            <div class="page__bd">
+                                <div class="weui-search-bar" id="searchBar">
+                                    <form class="weui-search-bar__form">
+                                        <div class="weui-search-bar__box">
+                                            <i class="weui-icon-search"></i>
+                                            <input id="search_list2" type="search" class="weui-search-bar__input" placeholder="搜索" required="">
+                                            <a href="javascript:" class="weui-icon-clear"></a>
+                                        </div>
+                                        <label class="weui-search-bar__label">
+                                            <i class="weui-icon-search"></i>
+                                            <span>搜索</span>
+                                        </label>
+                                    </form>
+                                    <a href="javascript:" class="weui-search-bar__cancel-btn f15" style="color:#1e7eaf;">取消</a>
+                                </div>
+                            </div>
+                            <div class="weui-tab1 h_93 b_c_w" id="tab3">
+                                <div class="weui-navbar3">
+                                    <div class="weui-navbar__item3">出车</div>
+                                    <div class="weui-navbar__item3">车修</div>
+                                </div>
+                                <div class="weui-tab__panel">
+                                    <div class="weui-tab__content3 b_c_w" id="own_list">
+
+                                    </div>
+                                    <div class="weui-tab__content3 b_c_w" id="repair_list">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- 已提交 -->
-                        <div class="weui-tab__content b_c_w" id="my_list">
+                        <!-- <div class="weui-tab__content b_c_w" id="my_list">
                             <div class="page__bd">
                                 <div class="weui-search-bar" id="searchBar">
                                     <form class="weui-search-bar__form">
@@ -136,34 +144,9 @@
                                 </div>
                             </div>
                             <div class="b_c_w f14" id="own_list">
-                                <!-- <a class="weui-cell weui-cell_access p_0 b_b_1" href="./my_list">
-                                    <div class="f14 w_100">
-                                        <div class="weui-media-box weui-media-box_text">
-                                            <div class="weui-flex">
-                                                <h4 class=" weui-flex__item weui-media-box__title f_w_7">
-                                                    <span style="vertical-align: middle">用车</span>
-                                                    <span class="weui-badge great auditing chang_f12" style="margin-left: 5px;">审批中</span>
-                                                </h4>
-                                                <div class="weui-flex__item t_a_r">昨天</div>
-                                            </div>
-
-                                            <div class="weui-flex ">
-                                                <div class="weui-flex__item">
-                                                    <div class="weui-cell p_0">
-                                                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                                                            <p class="c_9">事由</p>
-                                                        </div>
-                                                        <div class="weui-cell__bd">
-                                                            <p>督察检查</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a> -->
+                               
                             </div>
-                        </div>
+                        </div> -->
                         <!-- 车队还车 -->
                         <!-- <div class="weui-tab__content b_c_w" id="back_list">
                             <div class="b_c_w f14" id="backing_list">
@@ -173,6 +156,22 @@
 
                         <!-- 车队还车 -->
                         <div class="weui-tab__content b_c_w" id="back_list">
+                            <div class="page__bd">
+                                <div class="weui-search-bar" id="searchBar1">
+                                    <form class="weui-search-bar__form">
+                                        <div class="weui-search-bar__box">
+                                            <i class="weui-icon-search"></i>
+                                            <input type="search" class="weui-search-bar__input" placeholder="搜索" required="" id="search_list1">
+                                            <a href="javascript:" class="weui-icon-clear"></a>
+                                        </div>
+                                        <label class="weui-search-bar__label">
+                                            <i class="weui-icon-search"></i>
+                                            <span>搜索</span>
+                                        </label>
+                                    </form>
+                                    <a href="javascript:" class="weui-search-bar__cancel-btn f15" style="color:#1e7eaf;">取消</a>
+                                </div>
+                            </div>
                             <div class="weui-tab2 h_93 b_c_w" id="tab2">
                                 <div class="weui-navbar2">
                                     <div class="weui-navbar__item2">还车</div>
@@ -229,17 +228,26 @@
     <script src="./js/zepto.min.js"></script>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="./js/weui.js"></script>
+    <script src="js/wistorm/md5.js"></script>
     <script type="text/javascript" src="./js/public.js"></script>
+    <!-- <script src="js/wistorm/define.js"></script> -->
+    <script src="js/wistorm/wistorm.js"></script>
+    <script src="js/config.js"></script>
+
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript">
-        var _g = W.getSearch();
-        if (_g.UserId) {
-            W.setCookie('userid', _g.UserId, 2);
-        }
-        let userid = W.getCookie('userid');
-        if (!userid) {
-            top.location = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wwb0e4ffce3f6d8a8f&redirect_uri=http://h5.bibibaba.cn/qy_oauth2.php&response_type=code&scope=snsapi_userinfo&agentid=1000002&state=STATE#wechat_redirect'
-        }
+        // var _g = W.getSearch();
+        // var userid = W.getCookie('userid');
+        // if(!userid){
+        //     top.location = './login1'
+        // }
+        // if (_g.UserId) {
+        //     W.setCookie('userid', _g.UserId, 2);
+        // }
+        // let userid = W.getCookie('userid');
+        // if (!userid) {
+        //     top.location = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wwb0e4ffce3f6d8a8f&redirect_uri=http://h5.bibibaba.cn/qy_oauth2.php&response_type=code&scope=snsapi_userinfo&agentid=1000002&state=STATE#wechat_redirect'
+        // }
     </script>
     <!-- <script src="./js/example.js"></script> -->
 </body>

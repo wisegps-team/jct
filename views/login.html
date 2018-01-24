@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>登录</title>
+    <link rel="stylesheet" href="./css/weui.css" />
+    <link rel="stylesheet" href="./css/example.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body ontouchstart>
+
+    <div style="display: flex; min-height: 100vh;align-items: center;">
+        <div style="width:100%;max-width: 400px; margin: auto;">
+            <!-- react-text: 3 -->
+            <!-- /react-text -->
+            <div>
+                <div style="background-color: rgb(255, 255, 255);">
+                    <div style="display: flex; align-items: flex-end; padding: 3px 10px; border-bottom: 1px solid rgb(221, 221, 221);">
+                        <input id="account" name="account" value="" placeholder="请输入登录账号" style="width: 100%; height: 40px; font-size: 16px; border: none; outline: none;">
+                    </div>
+                    <div style="display: flex; align-items: flex-end; padding: 3px 10px; border-bottom: 1px solid rgb(221, 221, 221);">
+                        <input id="password" type="password" name="password" value="" placeholder="请输入密码" style="width: 100%; height: 40px; font-size: 16px; border: none; outline: none;">
+                    </div>
+                </div>
+                <div style="padding-left: 10%; padding-right: 10%;">
+                    <div style="position: relative; cursor: pointer; overflow: visible; display: table; height: auto; width: auto; margin-top: 10px;">
+                        <!-- <input type="checkbox" value="on" style="position: absolute; cursor: pointer; pointer-events: all; opacity: 0; width: 100%; height: 100%; z-index: 2; left: 0px; box-sizing: border-box; padding: 0px; margin: 0px;">
+                        <div style="display: flex; width: 100%; height: 100%;">
+                            <div style="transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; float: left; position: relative; display: block; flex-shrink: 0; width: 24px; margin-right: 16px; margin-left: 0px; height: 24px;">
+                                <div>
+                                    <svg viewBox="0 0 24 24" style="display: inline-block; color: rgba(0, 0, 0, 0.87); fill: rgba(0, 0, 0, 0.87); height: 24px; width: 24px; transition: all 2s cubic-bezier(0.23, 1, 0.32, 1) 200ms; position: absolute; opacity: 1; user-select: none;">
+                                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path>
+                                    </svg>
+                                    <svg viewBox="0 0 24 24" style="display: inline-block; color: rgba(0, 0, 0, 0.87); fill: rgb(33, 150, 243); height: 24px; width: 24px; transition: opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, transform 0ms cubic-bezier(0.23, 1, 0.32, 1) 450ms; position: absolute; opacity: 0; transform: scale(0); user-select: none;">
+                                        <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                                    </svg>
+                                </div>
+                                <div></div>
+                                <div style="position: absolute; overflow: hidden; height: 100%; width: 100%; top: 0px; left: 0px;"></div>
+                            </div>
+                            <label style="font-size:14px;float: left; position: relative; display: block; width: auto; line-height: 24px; color: rgba(0, 0, 0, 0.87); font-family: 微软雅黑;">记住密码</label>
+                        </div> -->
+                        <div class="weui-cells_checkbox">
+                            <label class="weui-cell weui-check__label" for="remember" style="padding:0">
+                                <div class="weui-cell__hd">
+                                    <input type="checkbox" checked="checked" class="weui-check" name="checkbox" id="remember">
+                                    <i class="weui-icon-checked"></i>
+                                </div>
+                                <div class="weui-cell__bd" style="font-size:14px">
+                                    <p>记住密码</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div style="color: rgba(0, 0, 0, 0.87); background-color: rgb(255, 255, 255); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: 微软雅黑; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-shadow: none; border-radius: 2px; display: inline-block; min-width: 88px; width: 100%; margin-top: 10px;">
+                        <button id="login" tabindex="0" type="button" style="border: 1px solid; box-sizing: border-box; display: inline-block; font-family: 微软雅黑; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; margin: 0px; padding: 0px; outline: none; font-size: inherit; font-weight: inherit; transform: translate(0px, 0px); position: relative; min-width: 88px; height: 36px; line-height: 36px; width: 100%; border-radius: 4px; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; background-color: rgb(238, 238, 238); color: rgb(33, 150, 243); text-align: center;">
+                            <div>
+                                <div style="height: 36px; border-radius: 4px; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; top: 0px;">
+                                    <span style="position: relative; opacity: 1; font-size: 14px; letter-spacing: 0px; text-transform: uppercase; font-weight: 500; margin: 0px; padding-left: 16px; padding-right: 16px; color: rgb(33, 150, 243); user-select: none;">登录</span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div style="color: rgba(0, 0, 0, 0.87); background-color: rgb(255, 255, 255); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: 微软雅黑; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-shadow: none; border-radius: 2px; display: inline-block; min-width: 88px; width: 100%; margin-top: 10px;">
+                        <button id="wx_login" tabindex="0" type="button" style="border: 1px solid; box-sizing: border-box; display: inline-block; font-family: 微软雅黑; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; margin: 0px; padding: 0px; outline: none; font-size: inherit; font-weight: inherit; transform: translate(0px, 0px); position: relative; min-width: 88px; height: 36px; line-height: 36px; width: 100%; border-radius: 4px; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; background-color: #09bb07; color: #09bb07; text-align: center;">
+                            <div>
+                                <div style="height: 36px; border-radius: 4px; transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; top: 0px;">
+                                    <span style="position: relative; opacity: 1; font-size: 14px; letter-spacing: 0px; text-transform: uppercase; font-weight: 500; margin: 0px; padding-left: 16px; padding-right: 16px; color: #FFF; user-select: none;">微信授权登录</span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+    <!-- <div class="js_dialog" id="androidDialog1" style="opacity: 0; display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog weui-skin_android">
+            <div class="weui-dialog__hd">
+                <strong class="weui-dialog__title">同意并选择下一级审核人</strong>
+            </div>
+            <div class="weui-dialog__bd" style="max-height: 250px; overflow-y: auto;" id="nextAuditer">
+                <label>
+                    <div class="weui-cell weui-cell_access" id="` + str + `">
+                        <input type="radio" style="margin-right:5px" name='auditer' checked/>
+                        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                            <img src="./img/1.png" style="width: 50px;display: block">
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>xxx</p>
+                            <p style="font-size: 13px;color: #888888;">公司领导</p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary " id="audit_commit">确定</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="audit_cancle">取消</a>
+            </div>
+        </div>
+    </div> -->
+    <script src="./js/zepto.min.js"></script>
+    <!-- <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> -->
+    <script src="./js/weui.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="js/wistorm/md5.js"></script>
+    <script src="./js/public.js"></script>
+    <script src="js/wistorm/wistorm.js"></script>
+    <script>
+
+        var _g = W.getSearch();
+        var account = W.getCookie('account');
+        var password = W.getCookie('password');
+        $('#account').val(account);
+        $('#password').val(password)
+
+
+        if (_g.again) { //重新登录
+            W.setCookie('userid', '', 30) //清空userid记录
+            W.setCookie('account', '', 30)
+            W.setCookie('password', '', 30);
+            account = '';
+            password = ''
+        }
+        if (account && password) {
+            top.location = '/home';
+        }
+        // debugger;
+        var userid = W.getCookie('userid');
+        if (userid) {
+            top.location = '/home'
+        } else {
+            if (_g.UserId) {
+                userid = _g.UserId;
+                W.setCookie('userid', userid, 30) //有效期30天
+                var json = { password: hex_md5('123456') }
+                UserMessage(json)
+            }
+        }
+
+        var _user = {};
+
+        var indexUrl = function (user) {
+            sessionStorage.setItem('user', JSON.stringify(user));
+            top.location = '/home'
+        }
+
+        function UserMessage(_json) {
+            var data = {};
+            var account = userid || _json.account;
+            if (userid) {
+                data.password = _json.password
+            } else {
+                data = _json;
+            }
+            $.ajax({
+                url: '/login',
+                data: data,
+                success: function (res) {
+                    debugger;
+                    if (res.status_code == 0) {
+                        W.setCookie('dev_key', res.wistorm.dev_key);
+                        W.setCookie('app_key', res.wistorm.app_key);
+                        W.setCookie('app_secret', res.wistorm.app_secret);
+                        W.setCookie('auth_code', res.access_token);
+                        wistorm_api.getUserList({ username: account }, 'objectId,username,authData,createdAt', '-createdAt', '-createdAt', 0, 0, -1, W.getCookie('auth_code'), function (json) {
+                            _user.user = json.data[0];
+                            if (json.total) {
+                                wistorm_api._list('employee', { uid: _user.user.objectId }, '', '', '-createdAt', 0, 0, 1, -1, W.getCookie('auth_code'), true, function (emp) {
+                                    _user.employee = emp.data[0];
+                                    if (emp.data[0]) {
+                                        if (emp.data[0].roleId) {
+                                            wistorm_api._list('role', { objectId: emp.data[0].roleId }, '', '-createdAt', '-createdAt', 0, 0, 1, -1, W.getCookie('auth_code'), false, function (roles) {
+                                                // console.log(roles)
+                                                _user.employee.rolename = roles.data[0] ? roles.data[0].name.trim() : null;
+                                                wistorm_api._list('department', { objectId: _user.employee.departId }, '', '', '-createdAt', 0, 0, 1, -1, W.getCookie('auth_code'), true, function (dep) {
+                                                    _user.depart = dep.data[0];
+                                                    indexUrl(_user)
+                                                })
+                                            })
+                                        } else {
+                                            wistorm_api._list('department', { objectId: _user.employee.departId }, '', '', '-createdAt', 0, 0, 1, -1, W.getCookie('auth_code'), true, function (dep) {
+                                                _user.depart = dep.data[0];
+                                                indexUrl(_user)
+                                            })
+                                        }
+                                    } else {
+                                        weui.alert('该账号无法登录')
+                                    }
+                                })
+                            } else {
+                                weui.alert('微信授权登录失败')
+                            }
+                        })
+                    } else {
+                        if (_g.UserId) {
+                            weui.alert('微信授权登录失败')
+                        } else {
+                            weui.alert('密码或账号不正确')
+                        }
+                    }
+                }
+            })
+        }
+
+        $('#login').on('click', function () {
+            // $('#remember')
+            account = $('#account').val();
+            password = $('#password').val();
+            if ($('#remember')[0].checked) {
+                W.setCookie('account', account, 30);
+                W.setCookie('password', password, 30);
+            } else {
+                W.setCookie('account', '');
+                W.setCookie('password', '');
+            }
+            if (!account) {
+                weui.alert('请输入账号');
+                return false;
+            } else if (!password) {
+                weui.alert('请输入密码');
+                return false;
+            }
+            var json = { account: account, password: hex_md5(password) }
+            UserMessage(json)
+        })
+
+        $('#wx_login').on('click', function () {
+            top.location = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wwb0e4ffce3f6d8a8f&redirect_uri=http://h5.bibibaba.cn/qy_oauth2.php&response_type=code&scope=snsapi_userinfo&agentid=1000002&state=STATE#wechat_redirect'
+            // top.location = '/?UserId=ceshiyi'
+        })
+
+
+    </script>
+</body>
+
+</html>
