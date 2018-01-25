@@ -50,12 +50,14 @@ $(document).ready(function () {
                                                 _user.employee.rolename = roles.data[0] ? roles.data[0].name.trim() : null;
                                                 wistorm_api._list('department', { objectId: _user.employee.departId }, '', '', '-createdAt', 0, 0, 1, -1, W.getCookie('auth_code'), true, function (dep) {
                                                     _user.depart = dep.data[0];
+                                                    sessionStorage.setItem('user', JSON.stringify(_user))
                                                     get_apply2()
                                                 })
                                             })
                                         } else {
                                             wistorm_api._list('department', { objectId: _user.employee.departId }, '', '', '-createdAt', 0, 0, 1, -1, W.getCookie('auth_code'), true, function (dep) {
                                                 _user.depart = dep.data[0];
+                                                sessionStorage.setItem('user', JSON.stringify(_user))
                                                 get_apply2()
                                             })
                                         }
@@ -241,31 +243,39 @@ $(document).ready(function () {
                     // console.log(index)
                     $('#container').hide();
                     $('#repair_info').show();
+                    $('#all_button').hide();
                     // if(!_g.my){
                     //     $('#my_button').hide();
                     // }
                     var state = { 'page_id': 1, 'user_id': 5 };
                     var title = '明细详情';
-                    var url = 'fix_details#details_' + index;
+                    var url = 'fix_detail#details_' + index;
                     history.pushState(state, title, url);
                     window.addEventListener('popstate', function (e) {
                         $('#container').show();
                         $('#repair_info').hide();
-                        history.go(0)
+                        $('#all_button').show();
+                        // history.go(0)
                         // if(_g.my){
                         //     $('#my_button').show();
                         // }
 
                     });
                     var _thisArr = data[index];
-                    var tr1 = ''
+                    var tr1 = '';
+                    var show_historyRepair = [];
                     if (_thisArr.history_arr.length) {
-                        tr1 = `<select style="width:50%;border-radius:2px">`
-                        _thisArr.history_arr.forEach(ele => {
-                            tr1 += `<option>${ele.SQR + '&nbsp;&nbsp;' + W.dateToString(W.date(ele.SQSJ))}</option>`
+                        // tr1 = `<select style="width:50%;border-radius:2px">`
+                        // _thisArr.history_arr.forEach(ele => {
+                        //     tr1 += `<option>${ele.SQR + '&nbsp;&nbsp;' + W.dateToString(W.date(ele.SQSJ))}</option>`
+                        // })
+                        // tr1 += '</select>'
+                        _thisArr.history_arr.forEach((ele, index) => {
+                            var op = { value: index, label: (ele.SQR + '&nbsp;&nbsp;' + W.dateToString(W.date(ele.SQSJ))) }
+                            show_historyRepair.push(op)
                         })
-                        tr1 += '</select>'
                     }
+                    tr1 = '<button id="history_rep" class="btn btn-default" style="margin-left:20px;padding:3px">维修历史</button>'
 
                     console.log(_thisArr, 'ccc')
                     let _lb1;
@@ -277,7 +287,16 @@ $(document).ready(function () {
                     $('#detail_dj').text(_thisArr.DJ);
                     $('#detail_je').text(_thisArr.JE)
                     $('#detail_bxq').text(_thisArr.BXQ)
-                    $('#detail_bz').text(_thisArr.BZ)
+                    $('#detail_bz').text(_thisArr.BZ);
+                    $('#history_rep').on('click', function () {
+                        weui.picker(show_historyRepair, {
+                            defaultValue: [0],
+                            onConfirm: function (result) {
+
+                            },
+                            id: 'wxdw'
+                        });
+                    })
                 })
             });
             if (data.length) {
@@ -612,7 +631,7 @@ $(document).ready(function () {
         function selectAuditer(data, type, isover) {
             console.log(data, type, 'dfd')
             if (type == 2) {
-                data = data.filter(ele => ele.rolename&&ele.rolename == '警务保障室领导')
+                data = data.filter(ele => ele.rolename && ele.rolename == '警务保障室领导')
             }
             $('#nextAuditer').empty();
             var append_spstatus = {};

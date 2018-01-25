@@ -11,7 +11,7 @@
 </head>
 
 <body ontouchstart>
-    <div class="container f14 o_auto" id="container" style="display:block">
+    <div class="container f14 o_auto" id="container" style="display:block;padding-bottom: 100px;">
         <div class="b_c_w b_b_1" id="show_detail" style="display:block">
             <div class="weui-cell">
                 <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
@@ -173,7 +173,7 @@
                                 <p class="c_9">进厂日期</p>
                             </div>
                             <div class="weui-cell__bd">
-                                <p id="JCRQ">2017-11-27</p>
+                                <p id="JCRQ"></p>
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                                 <p class="c_9">出厂日期</p>
                             </div>
                             <div class="weui-cell__bd">
-                                <p id="CCRQ">2017-11-27</p>
+                                <p id="CCRQ"></p>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                                 <p class="c_9">记账人</p>
                             </div>
                             <div class="weui-cell__bd">
-                                <p id="JZR">某某某</p>
+                                <p id="JZR"></p>
                             </div>
                         </div>
                     </div>
@@ -206,54 +206,13 @@
                                 <p class="c_9">结算人</p>
                             </div>
                             <div class="weui-cell__bd">
-                                <p id="JSR">某某某</p>
+                                <p id="JSR"></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- 进厂时间和出厂时间 -->
-        <!-- <div id="jccsj" style="display:none">
-            <div class="weui-cells tip">
-                <div class="weui-cell weui-cell_access f15" id="jcrq1">
-                    <div class="weui-cell__bd">
-                        <span style="vertical-align: middle">进厂日期</span>
-                    </div>
-                    <div class="weui-cell__ft">请选择</div>
-                </div>
-            </div>
-            <div class="weui-cells tip">
-                <div class="weui-cell weui-cell_access f15" id="ccrq1">
-                    <div class="weui-cell__bd">
-                        <span style="vertical-align: middle">出厂日期</span>
-                    </div>
-                    <div class="weui-cell__ft">请选择</div>
-                </div>
-            </div>
-            <div class="weui-cells tip">
-                <div class="weui-cell f15">
-                    <div class="weui-cell__hd">
-                        <label class="weui-label">记账人</label>
-                    </div>
-                    <div class="weui-cell__bd">
-                        <input class="weui-input t_a_r" placeholder="请输入" id="jzr">
-                    </div>
-                </div>
-            </div>
-            <div class="weui-cells tip">
-                <div class="weui-cell f15">
-                    <div class="weui-cell__hd">
-                        <label class="weui-label">结算人</label>
-                    </div>
-                    <div class="weui-cell__bd">
-                        <input class="weui-input t_a_r" placeholder="请输入" id="jsr">
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
 
 
         <div class="weui-cells tip" id="zgy" style="display: none;">
@@ -276,7 +235,7 @@
         </div>
 
 
-        <div class="clli" id="show_clli" style="display:block;margin-top:15px;margin-bottom:116px">
+        <div class="clli" id="show_clli" style="display:block;">
             <div class="weui-flex" style="background:#cccccc47;line-height:2">
                 <div class="weui-flex__item">
                     <div class="placeholder t_a_c">类别</div>
@@ -291,26 +250,13 @@
                     <div class="placeholder t_a_c">操作</div>
                 </div>
             </div>
-            <!-- <div class="weui-flex" style="line-height:2">
-                <div class="weui-flex__item">
-                    <div class="placeholder t_a_c">${_lb}</div>
-                </div>
-                <div class="weui-flex__item">
-                    <div class="placeholder t_a_c">${ele.XMMC}</div>
-                </div>
-                <div class="weui-flex__item">
-                    <div class="placeholder t_a_c">${ele.JE}</div>
-                </div>
-                <div class="weui-flex__item">
-                    <div class="placeholder t_a_c">
-                        <input type='button' value="详情" id=xq_${index} />
-                    </div>
-                </div>
-            </div> -->
         </div>
 
 
-        <div class="b_c_w submit b_t_1" id="other_button" style="display:none">
+
+    </div>
+    <div id="all_button" class="submit">
+        <div class="b_c_w  b_t_1" id="other_button" style="display:none">
             <div class="advice c_9">审批意见</div>
             <div class="weui-flex">
                 <div class="weui-flex__item">
@@ -329,15 +275,8 @@
                 </div>
             </div>
         </div>
-        <div class="b_c_w submit b_t_1" style="display:none" id="my_button">
+        <div class="b_c_w  b_t_1" style="display:none" id="my_button">
             <div class="weui-flex">
-                <!-- <div class="weui-flex__item">
-                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id='urge'>
-                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
-                            <i class="weui-icon-success-no-circle f14"></i> 催办
-                        </div>
-                    </a>
-                </div> -->
                 <div class="weui-flex__item">
                     <a class="weui-cell weui-cell_access p_0 " href="javascript:;" id="backout">
                         <div class="weui-media-box weui-media-box_text w_100 t_a_c">
@@ -346,7 +285,7 @@
                     </a>
                 </div>
                 <div class="weui-flex__item" id="submitAndaudit" style="display:none">
-                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;" >
+                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;">
                         <div class="weui-media-box weui-media-box_text w_100 t_a_c">
                             <i class="weui-icon-success-no-circle f14"></i> 确认并提交审核
                         </div>
@@ -359,15 +298,6 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- <div class="weui-flex__item" style="display:none" id="tjrq">
-                    <a class="weui-cell weui-cell_access p_0 " href="javascript:;">
-
-                        <div class="weui-media-box weui-media-box_text w_100 t_a_c">
-                            <i class="weui-icon-circle f14"></i> 提交日期
-                        </div>
-                    </a>
-                </div> -->
             </div>
         </div>
     </div>
@@ -387,6 +317,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="weui-flex">
                 <div class="weui-flex__item">
                     <div class="weui-cell">
@@ -399,6 +330,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="weui-flex">
                 <div class="weui-flex__item">
                     <div class="weui-cell">
@@ -494,7 +426,7 @@
     <script src="js/wistorm/wistorm.js"></script>
     <script src="./js/config.js"></script>
     <script src="./js/fix_detail.js"></script>
-    
+
     <!-- <script src="./js/my_list.js"></script> -->
 </body>
 

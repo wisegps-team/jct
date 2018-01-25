@@ -156,6 +156,7 @@ $(document).ready(function () {
         }
 
 
+
         function showMesssage(data) {
             console.log(data);
             console.log(vehicleCaptain, 'vehicle')
@@ -631,8 +632,10 @@ $(document).ready(function () {
                     table: 'ga_apply'
                 }, function (ga) {
                     wistorm_api._update('vehicle', { name: car }, { status: 1 }, W.getCookie('auth_code'), true, function (veh) {
+                        driver_tel = '\n驾驶员' + driver_tel;
                         sendmessage(_g.applyid, data.user.username, sendname, '车队已派车', 1, driver_tel, function () { //发送给申请人
                             // history.go(0)
+                            name_tel = '\n' + data.role + name_tel;
                             sendmessage(_g.applyid, driver_message.username, sendname, '车队派车', 1, name_tel, function () { //发送给驾驶员
                                 history.go(0)
                             })
@@ -852,7 +855,7 @@ $(document).ready(function () {
             str += '&userid=' + userid
             var _desc = username + '的用车'
             if (tel) {
-                _desc += '\n驾驶员' + tel
+                _desc += tel
             }
             var _op_data = { touser: userid, title: titles, desc: _desc, url: str, remark: "查看详情" };
             $.ajax({

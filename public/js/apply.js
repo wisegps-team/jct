@@ -688,7 +688,7 @@ $(document).ready(function () {
                                     })
                                 })
                             } else if (_user.employee.isDriver) {
-                                var tel = _user.employee.name + '(' + _user.employee.tel + ')'
+                                var tel = _user.employee.name + '(' + _user.employee.tel + (_user.employee.wechat ? '(' + _user.employee.wechat + ')' : '') + ')'
                                 sendmessage(res.id, syrid, form_option.name, '用车', 1, tel, function () {
                                     history.back();
                                 })
