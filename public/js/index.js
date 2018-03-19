@@ -69,6 +69,9 @@ $(document).ready(function () {
                     }
                     else {
                         weui.alert('还未登录', function () {
+                            W.setCookie('userid', '', 30) //清空userid记录
+                            W.setCookie('account', '', 30)
+                            W.setCookie('password', '', 30);
                             top.location = '/'
                         })
                     }

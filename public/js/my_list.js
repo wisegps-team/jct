@@ -396,6 +396,7 @@ $(document).ready(function () {
         console.log(data, 'toast_button');
 
         $('#urge').on('click', function () {  //催办
+            $('#auditerTitle').text('选择审核人')
             var option1 = {};
             var type = 0;
             if (data.estatus == 2) {
@@ -682,7 +683,9 @@ $(document).ready(function () {
 
     function selectAuditer(data, type, isagain) {
         console.log(data, type, 'dfd')
-        if (type == 2) {
+        if(type== 1){
+            data = data.filter(ele => ele.rolename && ele.rolename == '部门领导')
+        }else if (type == 2) {
             data = data.filter(ele => ele.rolename && ele.rolename == '警务保障室领导')
         }
         $('#nextAuditer').empty();

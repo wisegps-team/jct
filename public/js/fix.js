@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+
+
     var _g = W.getSearch();
     console.log(_g)
     var _user = JSON.parse(sessionStorage.getItem('user'));

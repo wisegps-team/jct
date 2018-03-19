@@ -475,13 +475,15 @@ $(document).ready(function () {
             emp.data.forEach(ele => {
                 wistorm_api.getUserList({ objectId: ele.uid }, 'objectId,username,authData,createdAt', '-createdAt', '-createdAt', 0, 0, -1, W.getCookie('auth_code'), function (json) {
                     ele.userId = json.data[0].username;
-
-                    i++;
-                    if (i == emp.total) {
-                        // showaudit(emp.data)
-                        console.log(emp.data)
-                        showauditer(emp.data)
-                    }
+                    wistorm_api._list('role', { objectId: ele.roleId }, '', '-createdAt', '-createdAt', 0, 0, 1, -1, W.getCookie('auth_code'), false, function (roles) {
+                        ele._roleName = roles.total ? roles.data[0].name : null;
+                        i++;
+                        if (i == emp.total) {
+                            // showaudit(emp.data)
+                            console.log(emp.data)
+                            showauditer(emp.data)
+                        }
+                    })
                 })
             })
         })
@@ -489,10 +491,11 @@ $(document).ready(function () {
     //所有部门的审批人
     function showauditer(data) {
         $('#addauditeres').empty();
-        data.forEach((ele, index) => {
+        var _data = data.filter(ele => ele._roleName == "部门领导")
+        _data.forEach((ele, index) => {
             var id = 'auditer_' + index
             var tr_content = `<span>
-               <input type="checkbox" id=${id} name="allAuditer" value=${ele.userId} /> <label for=${id} style="position: relative;left: -4px;top: -1px;">${ele.name}</label></span>`
+               <input type="checkbox" id=${id} name="allAuditer" value=${ele.userId} /> <label for=${id} style="position: relative;left: -2px;top: -3px;">${ele.name}</label></span>`
             $('#addauditeres').append(tr_content)
         })
         $('#auditer').show()
